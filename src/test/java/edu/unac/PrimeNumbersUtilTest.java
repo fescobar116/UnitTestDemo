@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 class PrimeNumbersUtilTest {
     @Test
     void getPrimeNumbersInRange() {
@@ -37,9 +36,11 @@ class PrimeNumbersUtilTest {
 
     @Test
     void getPrimeNumbersIllegalArgumentException(){
-        Assertions.assertThrows(
+        IllegalArgumentException ex = Assertions.assertThrows(
                 IllegalArgumentException.class,
                 () -> PrimeNumbersUtil.getPrimeNumbersInRange(60,10)
         );
+
+        Assertions.assertEquals("lowerLimit > upperLimit" , ex.getMessage());
     }
 }
